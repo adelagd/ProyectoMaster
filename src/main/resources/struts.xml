@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="myPackage" extends="struts-default">
+  		<!-- Login y logout -->
+    	<action name="login" class="com.cice.crud.web.LoginAction" method="execute">
+    		<result name="SUCCESS" type="redirect">cargarPanelUsuario.action</result>
+    		<result name="LOGIN">/pages/login.jsp</result>
+    	</action> 	
+    	<action name="logout" class="com.cice.crud.web.AuthenticationAction" method="logout">
+    		<result name="success">/pages/login.jsp</result>
+    	</action>
+    	
+  		<!-- Articulos  -->
+    	<action name="articulos" class="com.cice.crud.web.ArticulosAction" method="listArticulosWeb">
+    		<result>/WEB-INF/jsp/articulos.jsp</result>
+    	</action>
+    	<action name="articulosUsuario" class="com.cice.crud.web.ArticulosAction" method="listArticulosUsuario">
+    		<result type="redirect">/cargarPanelUsuario.action</result>
+    	</action>
+    	<action name="deleteArticulos" class="com.cice.crud.web.ArticulosAction" method="deleteArticulos">
+    		<result type="redirect">/cargarPanelUsuario.action</result>
+    	</action>
+       
+    	<action name="newArticulo" class="com.cice.crud.web.ArticulosAction" method="newArticulo">
+    		<result >/WEB-INF/jsp/addArticulo.jsp</result>
+    	</action>
+		<action name="saveArticulo" class="com.cice.crud.web.ArticulosAction" method="saveArticulo">
+			<result type="redirect">/cargarPanelUsuario.Action</result>
+		</action>
+   	<!-- Direcciones -->
+     	<action name="direcciones" class="com.cice.crud.web.DireccionesAction" method="listDirecciones">
+    		<result>/WEF-INF/jsp/direcciones.jsp</result>
+    	</action>
+    	<action name="direccionesUsuario" class="com.cice.crud.web.DireccionesAction" method="loadDireccionesUsuario">
+    		<result>/pages/misdirecciones.jsp</result>
+    	</action>
+
+    	<action name="newDireccion" class="com.cice.crud.web.DireccionesAction" method="newDireccion">
+    		<result>/WEB-INF/jsp/addDireccion.jsp</result>
+    	</action>
+    	
+   		<action name="saveDireccion" class="com.cice.crud.web.DireccionesAction" method="saveDireccion">
+            <result name="input">/pages/direccion.jsp</result>
+            <result name="success" type="redirect">/cargarPanelUsuario.action</result>
+        </action>   	
+        <action name="deleteDireccion" class="com.cice.crud.web.DireccionesAction" method="deleteDireccion">
+            <result name="success" type="redirect">/cargarPanelUsuario.action</result>
+        </action>
+      	<!--  -->
+      	<action name="cargarPanelUsuario" class="com.cice.crud.web.PanelUsuarioAction" method="cargarPanelUsuario">
+      		<result>/pages/panelusuario.jsp</result>
+      	</action>
+      	
+    	<!-- Datos Personales -->
+    	<action name="datosUsuario" class="com.cice.crud.web.DatosUsuarioAction" method="loadDatosUsuario">
+    		<result>/pages/panelusuario.jsp</result>
+    	</action>
+    	
+    	<action name="newDatosUsuario" class="com.cice.crud.web.DatosUsuarioAction" method="newDatosUsuario">
+    		<result>/pages/completarRegistro.jsp</result>
+    	</action>
+    	
+   		<action name="saveDatosUsuario" class="com.cice.crud.web.DatosUsuarioAction" method="saveDatosUsuario">
+            <result name="input">/WEB-INF/jsp/addDireccion.jsp</result>
+            <result name="success" type="redirect">/cargarPanelUsuario.action</result>
+        </action>   	
+        <action name="deleteDatosUsuario" class="com.cice.crud.web.DatosUsuarioAction" method="deleteDatosUsuario">
+            <result name="success" type="redirect">/cargarPanelUsuario.action</result>
+        </action>
+        <!-- Usuarios  -->
+        <action name="usuarios" class="com.cice.crud.web.UsuarioAction" method="listUsuarios">
+            <result>/WEB-INF/jsp/usuarios.jsp</result>
+        </action>
+
+        <action name="newUsuario" class="com.cice.crud.web.UsuarioAction" method="newUsuario">
+            
+            <result>/pages/registro.jsp</result>
+        </action>
+
+        <action name="saveUsuario" class="com.cice.crud.web.UsuarioAction" method="saveUsuario">
+            <result name="input">/pages/registro.jsp</result>
+            <result name="success">/pages/completarRegistro.jsp</result>
+        </action>
+
+        <action name="deleteUsuario" class="com.cice.crud.web.UsuarioAction" method="deleteUsuario">
+            <result name="success">/index.jsp</result>
+        </action>
+
+
+
+   
+    </package>
+</struts>
